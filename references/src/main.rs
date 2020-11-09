@@ -24,7 +24,7 @@ fn main() {
     let m2 = &mut mutable;
     let m4 = &mut mutable;
     let m5 = &mut mutable;
-    // println!("{} {} {}", m2, m4, m5); // error de compilación xq se está usando m4 y m5 y son referencia mutables 
+    //println!("{} {} {}", m2, m4, m5); // error de compilación xq se está usando m4 y m5 y son referencia mutables 
     /*
      todos podrian cambiar el string y rust evita el 'data race':
      - 2 o + punteros estan modificando la misma data
@@ -45,6 +45,8 @@ fn main() {
     println!("{} {} ", m6, m8); // m6 y m8 son inmutables, no hay problemas
 
     // rust asegura que no quedarán referencias perdidas/colgadas (dangling references)
+
+    println!("no dangle {}", no_dangle());
 }
 
 // borrowing: tener las referencias como parametros de funciones
@@ -56,3 +58,35 @@ fn calcular_largo(s: &String) -> usize {
 fn referencia_mutable(s: &mut String) {
     s.push_str(" mutable ");
 }
+
+/*
+no se puede usar porque se intenta retornar
+una referencia a s
+pero s será eliminada cuando termina
+el scope de la función
+*/
+/*
+fn dangle()  -> &String{
+    let s = String::from("dangle");
+    &s;
+}
+*/
+
+/**
+ * acá no hay problema con el valor retornado
+ * pues se retorna el string y no 
+ * la referencia
+ */
+fn no_dangle()  -> String{
+    let s = String::from("no-dangle");
+    s
+}
+
+/*
+
+- en cualquier momento se puede tener uno de los siguientes (no ambos):
+* una mutable
+* cualquier numero de referencia no mutables
+
+- las referencias siempre tienen que ser validas
+*/

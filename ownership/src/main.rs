@@ -102,6 +102,12 @@ fn main() {
 
     let (s6, largo) = calcular_largo(s5); // asigno el string a s6 para no perder s5
     println!("el string recuperado: {} el largo: {}", s6, largo);
+
+    let mut para_mutar = String::from("inicial");
+    println!("valor original: {}", para_mutar);
+    mutar_string(&mut para_mutar);
+    println!("valor mutado: {}", para_mutar);
+    
 }
 
 /** calcula el largo de un string. */
@@ -120,4 +126,8 @@ fn entregar_ownership() -> String {
 fn obtiene_y_regresa(str: String) -> String {
     println!("string obtenido: {}", str);
     str
+}
+
+fn mutar_string(str: &mut String) {
+    str.push_str(" -agregado- ")
 }

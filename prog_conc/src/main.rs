@@ -100,6 +100,7 @@ fn main() {
     let (v1, v2, v3) = tupla;
     println!("v1: {} v2: {} v3: {}", v1, v2, v3);
     let tupla = (c, suma, ttrue);
+    println!("{} {} {}", tupla.0, tupla.1, tupla.2);
     let (v1, v2, v3) = tupla;
     println!("v1: {} v2: {} v3: {}", v1, v2, v3);
 
@@ -111,6 +112,6 @@ fn main() {
     println!("arr: {}", arreglo[0]);
     let arreglo = [3; 5]; // tiene 5 tres
     println!("arr: {}", arreglo[0]);
-    // acceder a un indice que no existe en un 'index out of bounds' runtime error
-    una_funcion();
+    // acceder a un indice que no existe en un 'index out of bounds'
+    //println!("arr: {}", arreglo[5]);
 }
