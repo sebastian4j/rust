@@ -23,6 +23,7 @@ impl Rectangle {
     }
 }
 
+
 fn main() {
     // opción 1
     let width = 30;
